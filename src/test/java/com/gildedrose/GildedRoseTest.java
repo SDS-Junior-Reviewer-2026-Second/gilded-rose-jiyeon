@@ -143,4 +143,54 @@ public class GildedRoseTest {
 		assertEquals(-1, items[0].sellIn);
 		assertEquals(0, items[0].quality);
 	}
+
+	@Test
+	public void agedBrie_sellin_5_quality_10() {
+		Item[] items = new Item[]{new Item(AGED_BRIE, 5, 10)};
+
+		GildedRose gildedRose = new GildedRose(items);
+		gildedRose.updateQuality();
+
+		assertEquals(4, items[0].sellIn);
+		assertEquals(11, items[0].quality);
+	}
+
+	@Test
+	public void noname_sellin_5_quality_10() {
+		Item[] items = new Item[]{new Item(NONAME, 5, 10)};
+
+		GildedRose gildedRose = new GildedRose(items);
+		gildedRose.updateQuality();
+
+		assertEquals(4, items[0].sellIn);
+		assertEquals(9, items[0].quality);
+	}
+
+	@Test
+	public void backstage_pass_sellin_10_quality_0() {
+		Item[] items = new Item[]{
+				new Item(BACKSTAGE_PASS, 10, 0)
+		};
+
+		GildedRose gildedRose = new GildedRose(items);
+		gildedRose.updateQuality();
+
+		assertEquals(9, items[0].sellIn);
+		assertEquals(2, items[0].quality);
+	}
+
+	@Test
+	public void backstage_pass_sellin_5_quality_0() {
+		Item[] items = new Item[]{
+				new Item(BACKSTAGE_PASS, 5, 0)
+		};
+
+		GildedRose gildedRose = new GildedRose(items);
+		gildedRose.updateQuality();
+
+		assertEquals(4, items[0].sellIn);
+		assertEquals(3, items[0].quality);
+	}
+
+
 }
